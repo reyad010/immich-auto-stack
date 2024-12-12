@@ -222,7 +222,10 @@ def main():
     children_id = []
     
     if skip_previous:
-      children_id = [x['id'] for x in stack[1:] if x['stackCount'] == None ]
+      try:
+        children_id = [x['id'] for x in stack[1:] if x['stackCount'] == None ]
+      except:
+        pass
       
       if len(children_id) == 0:
         logger.info(f'{i}/{len(stacks)} Key: {key} SKIP! No new children!')
